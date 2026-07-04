@@ -1,7 +1,9 @@
 #include "ocr_channel.h"
 
+#include <windows.h>
 #include <flutter/standard_method_codec.h>
 #include <winrt/Windows.Foundation.h>
+#include <winrt/Windows.Foundation.Collections.h>
 #include <winrt/Windows.Globalization.h>
 #include <winrt/Windows.Graphics.Imaging.h>
 #include <winrt/Windows.Media.Ocr.h>
@@ -66,9 +68,9 @@ std::string RunOcrOnPngBytes(const std::vector<uint8_t>& png_bytes) {
 
 }  // namespace
 
-void RegisterOcrChannel(flutter::PluginRegistrarWindows* registrar) {
+void RegisterOcrChannel(flutter::BinaryMessenger* messenger) {
   auto channel = std::make_unique<flutter::MethodChannel<flutter::EncodableValue>>(
-      registrar->messenger(), "com.snapocr/ocr",
+      messenger, "com.snapocr/ocr",
       &flutter::StandardMethodCodec::GetInstance());
 
   channel->SetMethodCallHandler(

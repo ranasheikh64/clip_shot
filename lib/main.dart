@@ -36,13 +36,7 @@ Future<void> main() async {
   await windowManager.waitUntilReadyToShow(windowOptions, () async {
     await windowManager.show();
     await windowManager.focus();
-    // In release mode: hide to tray immediately (tray-only experience).
-    // In debug mode: keep window visible so `flutter run` can maintain its
-    // connection. The user can close/hide via the tray menu or window close.
-    if (kReleaseMode) {
-      await Future.delayed(const Duration(milliseconds: 600));
-      await windowManager.hide();
-    }
+    await windowManager.setPreventClose(true);
   });
 
   // Unregister any hotkeys from a previous session
@@ -150,6 +144,13 @@ class _SnapOcrAppState extends State<SnapOcrApp>
         windowManager.destroy();
         break;
     }
+  }
+
+  // ---- Window callbacks ----
+
+  @override
+  void onWindowClose() async {
+    await windowManager.hide();
   }
 
   // ---- App actions ----

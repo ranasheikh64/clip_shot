@@ -28,12 +28,7 @@ bool FlutterWindow::OnCreate() {
   RegisterPlugins(flutter_controller_->engine());
 
   // Register the on-device OCR channel (Windows.Media.Ocr via C++/WinRT)
-  {
-    auto* registrar = flutter_controller_->engine()->GetRegistrar(L"ClipShot");
-    auto* windows_registrar =
-        static_cast<flutter::PluginRegistrarWindows*>(registrar);
-    RegisterOcrChannel(windows_registrar);
-  }
+  RegisterOcrChannel(flutter_controller_->engine()->messenger());
 
   SetChildContent(flutter_controller_->view()->GetNativeWindow());
 
