@@ -24,6 +24,7 @@ dependencies:
 
 dev_dependencies:
   flutter_lints: ^4.0.0
+  msix: ^3.18.0
 
 flutter:
   uses-material-design: true
@@ -37,3 +38,13 @@ flutter_launcher_icons:
     generate: true
   windows:
     generate: true
+
+msix:
+  display_name: "ClipShot"
+  publisher_display_name: "YOUR_PUBLISHER_NAME_HERE"
+  identity_name: "YOUR_IDENTITY_NAME_HERE"
+  publisher: "YOUR_PUBLISHER_ID_HERE"
+  msix_version: "1.0.0.0"
+  logo_path: "assets/main_app_icon.png"
+  capabilities: "internetClient"
+  store: true
