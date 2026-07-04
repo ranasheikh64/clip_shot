@@ -1,0 +1,39 @@
+name: snap_ocr
+description: Screenshot + OCR + Annotation + Clipboard history desktop app
+version: 1.0.0+1
+publish_to: 'none'
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  window_manager: ^0.3.9
+  tray_manager: ^0.2.3
+  hotkey_manager: ^0.2.3
+  screen_capturer: ^0.2.3
+  super_clipboard: ^0.8.4
+  sqflite_common_ffi: ^2.3.3
+  path_provider: ^2.1.3
+  path: ^1.9.0
+  uuid: ^4.4.0
+  provider: ^6.1.2
+  intl: ^0.19.0
+  flutter_launcher_icons: ^0.14.4
+
+dev_dependencies:
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/tray_icon.png
+    - assets/main_app_icon.png
+
+flutter_launcher_icons:
+  image_path: "assets/main_app_icon.png"
+  macos:
+    generate: true
+  windows:
+    generate: true
